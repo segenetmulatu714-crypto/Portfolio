@@ -1,40 +1,86 @@
-document.addEventListener('DOMContentLoaded', function() {
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
 
-    const projectURLs = {
-        fashion: 'https://segenetmulatu.github.io/fashion-store',
-        hotel: 'https://segenetmulatu.github.io/hotel-booking',
-        food: 'https://segenetmulatu.github.io/food-delivery'
-    };
+body{
+    background:#f4f4f4;
+}
 
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            
-            if (e.target.classList.contains('view-project')) {
-                return;
-            }
-            
-            
-            const projectType = this.dataset.project;
-            const url = projectURLs[projectType];
-            
-            this.classList.add('clicked');
-            
-            
-            setTimeout(() => {
-                this.classList.remove('clicked');
-                if (url) {
-                    window.open(url, '_blank');
-                } else {
-                    showNotification('Project link coming soon!');
-                }
-            }, 200);
-        });
+header{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
 
-        
-        const viewButton = card.querySelector('.view-project');
-        if (viewButton) {
+header h1{
+    font-size:40px;
+}
+
+header p{
+    margin-top:10px;
+}
+
+.contact{
+    margin-top:20px;
+}
+
+.contact a{
+    color:#38bdf8;
+    text-decoration:none;
+}
+
+.projects{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:50px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    width:300px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card h2{
+    padding:15px;
+}
+
+.card p{
+    padding:0 15px 20px;
+}
+
+.card button{
+    margin:15px;
+    padding:10px 20px;
+    border:none;
+    background:#2563eb;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.card button:hover{
+    background:#1d4ed8;
+}        if (viewButton) {
             viewButton.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const projectType = card.dataset.project;
